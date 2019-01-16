@@ -1,8 +1,10 @@
 export default class Widget {
   constructor() {
+    // Start on document ready
     document.addEventListener('DOMContentLoaded', () => this._init())
   }
 
+  // Check for widgetry buttons and create iframes and add event handlers
   _init() {
     let buttons = document.querySelectorAll('.widgetry-button')
     if (!buttons.length) return
@@ -10,6 +12,7 @@ export default class Widget {
     this._addStyles()
     for (let button of buttons) {
       let url       = button.getAttribute('href')
+      // Check options specified in `data-` attributes
       let embedded  = button.getAttribute('data-embedded') === 'true'
       let addButton = button.getAttribute('data-button') === 'true'
       let iframe    = this._createIframe(button, embedded, url)
@@ -50,6 +53,7 @@ export default class Widget {
     }
   }
 
+  // Create an embedded/overlay iframe
   _createIframe(button, embedded, url) {
     let iframe = document.createElement('iframe')
     iframe.setAttribute('allowfullscreen', 'allowfullscreen')
@@ -67,6 +71,7 @@ export default class Widget {
     return iframe
   }
 
+  // Add content to iframe
   _fillIframe(iframe, html) {
     let iframeDoc = iframe.contentWindow.document
     iframeDoc.open()
@@ -75,6 +80,7 @@ export default class Widget {
     return iframeDoc
   }
 
+  // Add some styles for overlay and embedded iframes
   _addStyles() {
     let sheet = this._createSheet()
     sheet.addRule('.widgetry-overlay', 'position: fixed !important')
@@ -92,6 +98,7 @@ export default class Widget {
     sheet.addRule('.widgetry-overlay.widgetry-visible', 'display: block !important')
   }
 
+  // Create a stylesheet inside the document body
   _createSheet() {
     const style = document.createElement('style')
     style.appendChild(document.createTextNode(''))
