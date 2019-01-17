@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get 'book' => 'home#book'
+  get 'gumroad' => 'home#gumroad'
   root 'home#index'
 end

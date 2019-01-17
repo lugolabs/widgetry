@@ -2,6 +2,6 @@ class HomeController < ApplicationController
   def index
   end
 
-  def book
+  def gumroad
   end
 end

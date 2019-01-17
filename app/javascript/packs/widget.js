@@ -6,7 +6,8 @@ export default class Widget {
 
   // Check for widgetry buttons and create iframes and add event handlers
   _init() {
-    let buttons = document.querySelectorAll('.widgetry-button')
+    // let buttons = document.querySelectorAll('.widgetry-button')
+    let buttons = document.querySelectorAll('[href*="gumroad"]')
     if (!buttons.length) return
 
     this._addStyles()
